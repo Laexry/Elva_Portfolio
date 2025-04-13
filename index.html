@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elva's Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Krona+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div id="header"> 
+        <header>
+            <div class="navigation">
+                <div class="name">
+                    <p> {{ Elvaretta Alexandra }} </p>
+                </div>
+                
+                <nav class="nav">
+                    <ul style="list-style-type:none;" class="nav">
+                        <li class="main_nav"><a href="/">Home</a></li> 
+                        <li class="main_nav"><a href="#projects">Projects</a></li> 
+                        <li class="main_nav"><a href="#about">About</a></li>
+                        <li class="main_nav"><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>   
+            </div>
+        </header>
+    </div>
+
+    <div class="hero">
+        <div class="action">
+            <div class="hero_img">
+                <p class="hero_name">Elva's</p>
+                <img class="folder" src="images/folder.png">
+                <h1 class="hero_title">PORTFOLIO</h1>
+            </div>
+
+            <button class="action_button" onclick="window.location.href='#projects'">
+                &#128071; Check out my work below!
+            </button>
+      
+        </div>
+
+        <div class="personal">
+            <img class="arrow" src="images/arrow.png">
+            <img class="per_photo" src="images/per_photo.png" alt="my_photo">
+            <div class="type">
+                <p class="typing first">Hi, I’m Elva &#128075;</p>
+                <p class="typing second">Information Systems Student • Aspiring Full-Stack Developer • UI/UX Enthusiast</p>
+                <p class="typing third">Currently exploring web development and design!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="my_work" id="projects">
+        <div class="border"></div>
+        <p class="section_title">My Projects</p>
+        <p class="section_sub">Check out my works!</p>
+        <p class="section_text">A collection of projects I’ve built and designed. <br> Each one helping me grow my skills and explore new ways to create better digital experiences.</p>
+
+        <div class="buttons">
+            <button class="tab-btn active" data-tab="0">Development</button>
+            <button class="tab-btn" data-tab="1">Design</button>
+        </div>
+
+        <div class="slider-container">
+            <div class="slider" id="slider">
+              <div class="project-section" id="dev-projects">
+                <div class="card">
+                    <img src="projects/YooGa GenG.jpg">
+                    <div class="project_name">
+                        <h3>YooGa GenG</h3>
+                        <p class="proj_year">2024</p>
+                        <p class="proj_desc">Designed and developed a landing page for a yoga website during a bootcamp, featuring various yoga categories dynamically displayed using an API.</p>
+                        <div class="tools">
+                            <p class="using">HTML</p> 
+                            <p class="using">CSS</p>
+                            <p class="using">JavaScript</p>
+                        </div>
+                        <div class="sources">
+                            <a class="code" href="https://github.com/Laexry/YoogaGenG">Go to Source Code</a>
+                            <a class="web" href="https://laexry.github.io/YoogaGenG/">Go to Website</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="projects/Telkomedika.png">
+                    <div class="project_name">
+                        <h3>Telkomedika</h3>
+                        <p class="proj_year">2024 - 2025</p>
+                        <p class="proj_desc">Designed and developed the landing, login, register, profile, and admin side page for an appointment booking platform for Telkomedika Clinic using Laravel and MySQL, implementing full CRUD functionality. Built as part of a web development and project management course.</p>
+                        <div class="tools">
+                            <p class="using">HTML</p> 
+                            <p class="using">CSS</p>
+                            <p class="using">PHP</p>
+                            <p class="using">JavaScript</p>
+                            <p class="using">Laravel</p>
+                            <p class="using">MySQL</p>
+                        </div>
+                        <div class="sources">
+                            <a class="code" href="https://github.com/ijapi/WAD-X-MANPROSI-FINAL-PROJECT">Go to Source Code</a>
+                            <a class="web" href="https://youtu.be/gsVmhueutP0">Go to Demo</a>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        
+              <div class="project-section" id="design-projects">
+                <div class="card">
+                    <img src="projects/SeedFund.png">
+                    <div class="project_name">
+                        <h3>SeedFund</h3>
+                        <p class="proj_year">2023</p>
+                        <p class="proj_desc">Created a high-fidelity mobile app prototype for SeedFund, a tree donation platform, using Figma. Focused on user-centered design principles as part of a UI/UX course project.</p>
+                        <div class="tools">
+                            <p class="using">Figma</p> 
+                        </div>
+                        <div class="sources">
+                            <a class="prototype" href="https://www.figma.com/proto/AHCNLtoE5uMd9Ne30Poi4B/SeedFunds-Prototype?node-id=903-6563&starting-point-node-id=903%3A6563&t=kqKnHG0pDHvhXsB6-1">Go to Prototype</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="projects/QCTrack.png">
+                    <div class="project_name">
+                        <h3>QCTrack</h3>
+                        <p class="proj_year">2023 - 2024</p>
+                        <p class="proj_desc">Designed a high-fidelity web app prototype called QCTrack for a beauty company, aimed at managing and tracking product development processes. Created as part of an Interaction Design course.</p>
+                        <div class="tools">
+                            <p class="using">Figma</p> 
+                        </div>
+                        <div class="sources">
+                            <a class="prototype" href="https://www.figma.com/proto/Art118Asc0rrDThjiywnvr/QCTrack?node-id=125-5&starting-point-node-id=125%3A5&t=EJmJupjocs93z9wK-1">Go to Prototype</a>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <script>
+            const buttons = document.querySelectorAll(".tab-btn");
+            const slider = document.getElementById("slider");
+
+            buttons.forEach((btn, index) => {
+            btn.addEventListener("click", () => {
+                slider.style.transform = `translateX(-${index * 50}%)`;
+                buttons.forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+            });
+            });
+          </script>
+    </div>
+
+    <div class="about_me" id="about">
+        <div class="border"></div>
+        <p class="section_title">About Me</p>
+        <div class="abt_sub">
+            <div class="prof_photo">
+                <img src="images/prof_photo.png">
+            </div>
+            
+            <div class="abt_text">
+                <p>Hi! I’m Elvaretta Alexandra, a 6th-semester Information Systems student from Jakarta with a strong interest in software engineering and UI design. 
+                    Passionate about developing user-focused applications, I enjoy blending technical functionality with clean, intuitive design.</p>
+                <p>I have hands-on experience in both front-end and back-end technologies, building my skills through academic projects and independent learning. 
+                    I thrive in team environments, collaborating to deliver high-quality results. I also have a keen eye for design and love creating engaging user experiences.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="skills">
+        <div class="border"></div>
+        <p class="section_title">My Skills</p>
+        <div class="skill_title tech">
+            <p>Technical Skills</p>
+                <ul>
+                    <li><span>Programming Languages:</span> HTML, CSS, JavaScript, Python, PHP, Java</li> 
+                    <li><span>Frameworks & Tools:</span> Laravel, MySQL, GitHub</li>
+                    <li><span>Development Focus:</span> Full-stack web development, responsive design, database integration</li>
+                </ul>
+        </div>
+
+        <div class="skill_title design">
+            <p>Design Skills</p>
+                <ul>
+                    <li><span>UI/UX Design:</span> Prototyping, wireframing, user-centered design principles</li> 
+                    <li><span>Tools:</span> Figma, Canva</li>
+                    <li><span>Visual Design:</span> Poster design, digital graphics, layout composition</li>
+                </ul>
+        </div>
+
+    </div>
+
+    <div class="contact" id="contact">
+        <div class="border"></div>
+        <p class="section_title">My Contacts</p>
+        <p class="section_sub">Get In Touch!</p>
+        <p class="section_text">Feel free to reach out through any of the platforms below <br> I’d love to hear from you!</p>
+
+        <div class="contact_section">
+            <div class="link email">
+                <img src="images/emailLogo.png" alt="email">
+                <a href="mailto:elvaretta2004@email.com">elvaretta2004@email.com</a>
+            </div>
+            <div class="link github">
+                <img src="images/githubLogo.png" alt="github">
+                <a href="https://github.com/Laexry">github.com/Laexry</a>
+            </div>
+            <div class="link linkedin">
+                <img src="images/linkedinLogo.png" alt="linkedin">
+                <a href="https://www.linkedin.com/in/elvarettaalexandra/">linkedin.com/in/elvarettaalexandra</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
