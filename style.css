@@ -161,18 +161,25 @@ body {
 }
 
 .typing.first {
+    font-weight: 1000;
   width: 0ch;
   animation: typingFirst 2s steps(30, end) forwards, blink 0.7s step-end 3;
 }
 
 .typing.second {
+    font-weight: 900;
   width: 0ch;
   animation: typingSecond 2s steps(60, end) 2s forwards, blink 0.7s step-end 3 3s;
 }
 
 .typing.third {
   width: 0ch;
-  animation: typingThird 2s steps(50, end) 4s forwards, blink 0.7s step-end 3 7s;
+  animation: typingThird 3.5s steps(95, end) 3s forwards, blink 0.7s step-end 3 7s;
+}
+
+.typing.fourth {
+  width: 0ch;
+  animation: typingThird 3.5s steps(95, end) 5s forwards, blink 0.7s step-end 3 7s;
 }
 
 @keyframes typingFirst {
@@ -187,7 +194,7 @@ body {
 
 @keyframes typingThird {
   from { width: 0ch; }
-  to { width: 50ch; }
+  to { width: 95ch; }
 }
 
 /* Section Header Utilities */
