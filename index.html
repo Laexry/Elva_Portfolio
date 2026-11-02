@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elva's Portfolio</title>
+    <meta name="description"
+        content="Portfolio of Elvaretta Alexandra, Information Systems graduate building accessible web applications and UI/UX designs.">
+    <meta name="theme-color" content="#834B30">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +16,8 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+    <script src="js/portfolio.js" defer></script>
+    <link rel="icon" type="image/png" href="images/folder.png">
 </head>
 
 <body>
@@ -21,14 +26,21 @@
         <header>
             <div class="navigation">
                 <div class="name">
-                    <p> {{ Elvaretta Alexandra }} </p>
+                    <p data-content="name"> {{ Elvaretta Alexandra }} </p>
                 </div>
 
-                <nav class="nav">
-                    <ul style="list-style-type:none;" class="nav">
+                <button id="nav-toggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false"
+                    aria-controls="site-nav">
+                    <span></span><span></span><span></span>
+                </button>
+
+                <nav class="nav" id="site-nav">
+                    <ul class="nav">
                         <li class="main_nav"><a href="#home" class="active">Home</a></li>
                         <li class="main_nav"><a href="#projects">Projects</a></li>
                         <li class="main_nav"><a href="#about">About</a></li>
+                        <li class="main_nav"><a href="#skills">Skills</a></li>
+                        <li class="main_nav" id="nav-certs" hidden><a href="#certifications">Certificates</a></li>
                         <li class="main_nav"><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
@@ -39,8 +51,8 @@
     <div class="hero" id="home">
         <div class="action">
             <div class="hero_img">
-                <p class="hero_name">Elva's</p>
-                <img class="folder" src="images/folder.png">
+                <p class="hero_name" data-content="short-name">Elva's</p>
+                <img class="folder" src="images/folder.png" alt="" aria-hidden="true">
                 <h1 class="hero_title">PORTFOLIO</h1>
             </div>
 
@@ -52,14 +64,14 @@
         </div>
 
         <div class="personal">
-            <img class="arrow" src="images/arrow.png">
-            <img class="per_photo" src="images/per_photo.png" alt="my_photo">
+            <!-- <img class="arrow" src="images/arrow.png" alt="" aria-hidden="true"> -->
+            <img class="per_photo" src="images/per_photo.png" alt="Photo of Elvaretta Alexandra"
+                data-content-alt="name" data-alt-prefix="Photo of " fetchpriority="high">
             <div class="type">
-                <p class="typing first">Hi, I’m Elva &#128075;</p>
-                <p class="typing second">Information Systems Graduate
-                </p>
-                <p class="typing third">Creating accessible web applications and bridging technology, </p>
-                <p class="typing fourth">design, and practical solutions.</p>
+                <p class="typing first" data-content="greeting">Hi, I’m Elva &#128075;</p>
+                <p class="typing second" data-content="role">Information Systems Graduate</p>
+                <p class="typing third" data-content="tagline">Creating accessible web applications and bridging
+                    technology, design, and practical solutions.</p>
             </div>
         </div>
     </div>
@@ -83,7 +95,12 @@
         </div>
 
         <div class="projects-content">
-            <!-- Development Projects Panel -->
+            <p id="projects-status" class="status" role="alert" hidden>
+                Couldn&rsquo;t load my projects right now.
+                <button type="button" id="projects-retry" class="status-retry">Try again</button>
+            </p>
+
+            <!-- Development Projects Panel (cards are rendered from the database by js/portfolio.js) -->
             <div class="tab-panel active" id="dev-projects">
                 <div class="carousel-wrapper">
                     <button class="slider-btn prev-btn" aria-label="Previous Project">
@@ -92,189 +109,33 @@
                             <path d="M15 18l-6-6 6-6" />
                         </svg>
                     </button>
-
                     <div class="slider-track-container">
                         <div class="slider-track">
-                            <div class="card">
-                                <div class="card-img-wrapper">
-                                    <img src="projects/YooGa GenG.jpg" alt="YooGa GenG">
-                                </div>
+                            <div class="card skeleton" aria-hidden="true">
+                                <div class="card-img-wrapper"></div>
                                 <div class="project_name">
-                                    <div class="project-header">
-                                        <h3>YooGa GenG</h3>
-                                        <span class="proj_year">2024</span>
-                                    </div>
-                                    <p class="proj_desc">Designed and developed a responsive landing page for a yoga
-                                        platform during Generation Girl's Summer Club Explorer 2024. <br><br> Integrated
-                                        external REST APIs to dynamically fetch, filter, and render distinct yoga
-                                        categories and routines, delivering a clean and interactive user experience.</p>
-                                    <div class="tools">
-                                        <span class="using">HTML</span>
-                                        <span class="using">CSS</span>
-                                        <span class="using">JavaScript</span>
-                                        <span class="using">REST API</span>
-                                    </div>
-                                    <div class="sources">
-                                        <a class="code" href="https://github.com/Laexry/YoogaGenG" target="_blank"
-                                            rel="noopener">
-                                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor"
-                                                stroke-width="2" fill="none">
-                                                <path
-                                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                                            </svg>
-                                            Source Code
-                                        </a>
-                                        <a class="web" href="https://laexry.github.io/YoogaGenG/" target="_blank"
-                                            rel="noopener">
-                                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor"
-                                                stroke-width="2" fill="none">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <line x1="2" y1="12" x2="22" y2="12" />
-                                                <path
-                                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                                            </svg>
-                                            Live Demo
-                                        </a>
-                                    </div>
+                                    <div class="sk-line sk-title"></div>
+                                    <div class="sk-line"></div>
+                                    <div class="sk-line"></div>
+                                    <div class="sk-line sk-short"></div>
                                 </div>
                             </div>
-
-                            <div class="card">
-                                <div class="card-img-wrapper">
-                                    <img src="projects/Telkomedika.png" alt="Telkomedika">
-                                </div>
+                            <div class="card skeleton" aria-hidden="true">
+                                <div class="card-img-wrapper"></div>
                                 <div class="project_name">
-                                    <div class="project-header">
-                                        <h3>Telkomedika</h3>
-                                        <span class="proj_year">2024 - 2025</span>
-                                    </div>
-                                    <p class="proj_desc">Designed and developed an end-to-end appointment booking
-                                        platform for Telkomedika Clinic using Laravel and MySQL.<br><br> Implemented
-                                        full CRUD functionality across user registration, authentication, patient
-                                        profiles, and medical appointment management, along with a dedicated
-                                        administrator dashboard to manage schedules, patients, and clinic operations.
-                                    </p>
-                                    <div class="tools">
-                                        <span class="using">Laravel</span>
-                                        <span class="using">PHP</span>
-                                        <span class="using">MySQL</span>
-                                        <span class="using">JavaScript</span>
-                                        <span class="using">CSS</span>
-                                    </div>
-                                    <div class="sources">
-                                        <a class="code" href="https://github.com/ijapi/WAD-X-MANPROSI-FINAL-PROJECT"
-                                            target="_blank" rel="noopener">
-                                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor"
-                                                stroke-width="2" fill="none">
-                                                <path
-                                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                                            </svg>
-                                            Source Code
-                                        </a>
-                                        <a class="web" href="https://youtu.be/gsVmhueutP0" target="_blank"
-                                            rel="noopener">
-                                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor"
-                                                stroke-width="2" fill="none">
-                                                <polygon points="5 3 19 12 5 21 5 3" />
-                                            </svg>
-                                            Watch Demo
-                                        </a>
-                                    </div>
+                                    <div class="sk-line sk-title"></div>
+                                    <div class="sk-line"></div>
+                                    <div class="sk-line"></div>
+                                    <div class="sk-line sk-short"></div>
                                 </div>
                             </div>
-
-                            <div class="card">
-                                <div class="card-img-wrapper">
-                                    <img src="projects/Budayana v1.0.png" alt="Cerita Budayana">
-                                </div>
+                            <div class="card skeleton" aria-hidden="true">
+                                <div class="card-img-wrapper"></div>
                                 <div class="project_name">
-                                    <div class="project-header">
-                                        <h3>Budayana v1.0</h3>
-                                        <span class="proj_year">2026</span>
-                                    </div>
-                                    <p class="proj_desc">Designed and developed a multi-portal educational platform
-                                        designed to improve elementary school literacy through gamified Indonesian
-                                        folklore. <br> <br>Engineered a hybrid storytelling architecture featuring dual
-                                        reading modes (static text and visual with embedded mini-quizzes) paired with a
-                                        pre-test and post-test workflow to evaluate student comprehension. Built
-                                        role-based access portals for students, teachers (class score tracking and
-                                        analytics), and parents (individual student progress monitoring).</p>
-                                    <div class="tools">
-                                        <span class="using">JavaScript XML</span>
-                                        <span class="using">CSS</span>
-                                        <span class="using">TypeScript</span>
-                                        <span class="using">Prisma</span>
-                                        <span class="using">PostgreSQL</span>
-                                    </div>
-                                    <div class="sources">
-                                        <a class="code" href="https://github.com/maeylavv/budayana-full" target="_blank"
-                                            rel="noopener">
-                                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor"
-                                                stroke-width="2" fill="none">
-                                                <path
-                                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                                            </svg>
-                                            Source Code
-                                        </a>
-                                        <a class="web" href="https://budayana-app.vercel.app/" target="_blank"
-                                            rel="noopener">
-                                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor"
-                                                stroke-width="2" fill="none">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <line x1="2" y1="12" x2="22" y2="12" />
-                                                <path
-                                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                                            </svg>
-                                            Live Demo
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-img-wrapper">
-                                    <img src="projects/Cerita Budayana.png" alt="Budayana">
-                                </div>
-                                <div class="project_name">
-                                    <div class="project-header">
-                                        <h3>Cerita Budayana</h3>
-                                        <span class="proj_year">2026</span>
-                                    </div>
-                                    <p class="proj_desc">Developed an accessible early-literacy web application tailored
-                                        for kindergarten students, offering a streamlined version of the Budayana
-                                        platform.<br><br> Implemented voice-assisted audio playback on every story slide
-                                        to aid early readers, combined with interactive folktales and embedded
-                                        micro-quizzes to foster active listening and engagement without assessment
-                                        overhead.</p>
-                                    <div class="tools">
-                                        <span class="using">JavaScript XML</span>
-                                        <span class="using">CSS</span>
-                                        <span class="using">TypeScript</span>
-                                        <span class="using">Prisma</span>
-                                        <span class="using">PostgreSQL</span>
-                                    </div>
-                                    <div class="sources">
-                                        <a class="code" href="https://github.com/maeylavv/budayana-tk" target="_blank"
-                                            rel="noopener">
-                                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor"
-                                                stroke-width="2" fill="none">
-                                                <path
-                                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                                            </svg>
-                                            Source Code
-                                        </a>
-                                        <a class="web" href="https://www.cerita-budayana.com/" target="_blank"
-                                            rel="noopener">
-                                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor"
-                                                stroke-width="2" fill="none">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <line x1="2" y1="12" x2="22" y2="12" />
-                                                <path
-                                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                                            </svg>
-                                            Live Demo
-                                        </a>
-                                    </div>
+                                    <div class="sk-line sk-title"></div>
+                                    <div class="sk-line"></div>
+                                    <div class="sk-line"></div>
+                                    <div class="sk-line sk-short"></div>
                                 </div>
                             </div>
                         </div>
@@ -299,73 +160,8 @@
                             <path d="M15 18l-6-6 6-6" />
                         </svg>
                     </button>
-
                     <div class="slider-track-container">
-                        <div class="slider-track">
-                            <div class="card">
-                                <div class="card-img-wrapper">
-                                    <img src="projects/SeedFund.png" alt="SeedFund">
-                                    <span class="card-badge">Mobile UI/UX</span>
-                                </div>
-                                <div class="project_name">
-                                    <div class="project-header">
-                                        <h3>SeedFund</h3>
-                                        <span class="proj_year">2023</span>
-                                    </div>
-                                    <p class="proj_desc">Created a high-fidelity mobile app prototype for SeedFund, a
-                                        tree donation platform, using Figma. Focused on user-centered design principles
-                                        as part of a UI/UX course project.</p>
-                                    <div class="tools">
-                                        <span class="using">Figma</span>
-                                        <span class="using">UI/UX</span>
-                                        <span class="using">Prototyping</span>
-                                    </div>
-                                    <div class="sources">
-                                        <a class="prototype"
-                                            href="https://www.figma.com/proto/AHCNLtoE5uMd9Ne30Poi4B/SeedFunds-Prototype?node-id=903-6563&starting-point-node-id=903%3A6563&t=kqKnHG0pDHvhXsB6-1"
-                                            target="_blank" rel="noopener">
-                                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor"
-                                                stroke-width="2" fill="none">
-                                                <path d="M5 12h14M12 5l7 7-7 7" />
-                                            </svg>
-                                            View Figma Prototype
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-img-wrapper">
-                                    <img src="projects/QCTrack.png" alt="QCTrack">
-                                    <span class="card-badge">Web UI/UX</span>
-                                </div>
-                                <div class="project_name">
-                                    <div class="project-header">
-                                        <h3>QCTrack</h3>
-                                        <span class="proj_year">2023 - 2024</span>
-                                    </div>
-                                    <p class="proj_desc">Designed a high-fidelity web app prototype called QCTrack for a
-                                        beauty company, aimed at managing and tracking product development processes.
-                                        Created as part of an Interaction Design course.</p>
-                                    <div class="tools">
-                                        <span class="using">Figma</span>
-                                        <span class="using">Interaction Design</span>
-                                        <span class="using">Dashboard</span>
-                                    </div>
-                                    <div class="sources">
-                                        <a class="prototype"
-                                            href="https://www.figma.com/proto/Art118Asc0rrDThjiywnvr/QCTrack?node-id=125-5&starting-point-node-id=125%3A5&t=EJmJupjocs93z9wK-1"
-                                            target="_blank" rel="noopener">
-                                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor"
-                                                stroke-width="2" fill="none">
-                                                <path d="M5 12h14M12 5l7 7-7 7" />
-                                            </svg>
-                                            View Figma Prototype
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="slider-track"></div>
                     </div>
 
                     <button class="slider-btn next-btn" aria-label="Next Project">
@@ -380,12 +176,12 @@
         </div>
 
         <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                // Tab Switching
+            window.initProjectCarousels = () => {
+                // Tab Switching (bind once)
                 const tabBtns = document.querySelectorAll('.my_work .tab-btn');
                 const tabPanels = document.querySelectorAll('.my_work .tab-panel');
 
-                tabBtns.forEach(btn => {
+                if (!window.__tabsBound) tabBtns.forEach(btn => {
                     btn.addEventListener('click', () => {
                         const targetId = btn.getAttribute('data-tab');
 
@@ -403,11 +199,12 @@
                         }
                     });
                 });
+                window.__tabsBound = true;
 
                 // Slider Carousel Initializer
                 tabPanels.forEach(panel => {
                     const carouselWrapper = panel.querySelector('.carousel-wrapper');
-                    if (!carouselWrapper) return;
+                    if (!carouselWrapper || carouselWrapper.dataset.ready) return;
 
                     const track = carouselWrapper.querySelector('.slider-track');
                     const cards = Array.from(track.querySelectorAll('.card'));
@@ -416,6 +213,7 @@
                     const dotsContainer = panel.querySelector('.slider-dots');
 
                     if (cards.length === 0) return;
+                    carouselWrapper.dataset.ready = '1';
 
                     let currentIndex = 0;
                     let isDragging = false;
@@ -577,13 +375,15 @@
                     track.addEventListener('mouseleave', () => { if (isDragging) touchEnd(); });
                     track.addEventListener('mousemove', touchMove);
 
+                    let resizeTimer;
                     window.addEventListener('resize', () => {
-                        updateSlider();
+                        clearTimeout(resizeTimer);
+                        resizeTimer = setTimeout(updateSlider, 120);
                     });
 
                     updateSlider();
                 });
-            });
+            };
         </script>
     </div>
 
@@ -592,10 +392,11 @@
         <p class="section_title">About Me</p>
         <div class="abt_sub">
             <div class="prof_photo">
-                <img src="images/prof_photo.png">
+                <img src="images/prof_photo.png" alt="Portrait of Elvaretta Alexandra" loading="lazy"
+                    data-content-alt="name" data-alt-prefix="Portrait of ">
             </div>
 
-            <div class="abt_text">
+            <div class="abt_text" data-content="about">
                 <p>Hi! I’m Elvaretta Alexandra, a Information Systems IUP (International Undergraduate Program) fresh
                     graduate from Telkom University with a strong interest
                     in software engineering and UI design.
@@ -615,22 +416,23 @@
         <div class="skill_title tech">
             <p>Technical Skills</p>
             <ul>
-                <li><span>Programming Languages:</span> HTML, CSS, JavaScript, Python, PHP, Java</li>
-                <li><span>Frameworks & Tools:</span> Laravel, MySQL, GitHub</li>
-                <li><span>Development Focus:</span> Full-stack web development, responsive design, database integration
-                </li>
+                <li>Loading&hellip;</li>
             </ul>
         </div>
 
         <div class="skill_title design">
             <p>Design Skills</p>
             <ul>
-                <li><span>UI/UX Design:</span> Prototyping, wireframing, user-centered design principles</li>
-                <li><span>Tools:</span> Figma, Canva</li>
-                <li><span>Visual Design:</span> Poster design, digital graphics, layout composition</li>
+                <li>Loading&hellip;</li>
             </ul>
         </div>
+    </div>
 
+    <div class="certs reveal" id="certifications" hidden>
+        <div class="border"></div>
+        <p class="section_title">Certifications</p>
+        <p class="section_text">Professional credentials I&rsquo;ve earned along the way.</p>
+        <div class="cert-accordion"></div>
     </div>
 
     <div class="contact reveal" id="contact">
@@ -663,6 +465,19 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // 0. Mobile hamburger menu
+            const navToggle = document.getElementById('nav-toggle');
+            const siteNav = document.getElementById('site-nav');
+            const setNav = (open) => {
+                siteNav.classList.toggle('open', open);
+                navToggle.classList.toggle('open', open);
+                navToggle.setAttribute('aria-expanded', String(open));
+                navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            };
+            navToggle.addEventListener('click', () => setNav(!siteNav.classList.contains('open')));
+            siteNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setNav(false)));
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setNav(false); });
+
             // 1. Navigation Active Scroll Observer & Sticky Header Class
             const sections = document.querySelectorAll('div[id]');
             const navLinks = document.querySelectorAll('.nav a');
@@ -720,23 +535,17 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // 4. Quick Email Copy to Clipboard & Toast
-            const emailLink = document.querySelector('.link.email a');
+            // 4. Quick Email Copy to Clipboard & Toast (works with DB-rendered contacts)
             const toast = document.getElementById('toast-notification');
-
-            if (emailLink && toast) {
-                emailLink.addEventListener('click', (e) => {
-                    const email = 'elvaretta2004@email.com';
-                    navigator.clipboard.writeText(email).then(() => {
-                        toast.classList.add('show');
-                        setTimeout(() => {
-                            toast.classList.remove('show');
-                        }, 2500);
-                    }).catch(err => {
-                        console.log('Copy failed', err);
-                    });
-                });
-            }
+            document.querySelector('.contact_section')?.addEventListener('click', (e) => {
+                const link = e.target.closest('a[href^="mailto:"]');
+                if (!link || !toast || !navigator.clipboard) return;
+                const email = link.getAttribute('href').replace(/^mailto:/i, '').split('?')[0];
+                navigator.clipboard.writeText(email).then(() => {
+                    toast.classList.add('show');
+                    setTimeout(() => toast.classList.remove('show'), 2500);
+                }).catch(err => console.log('Copy failed', err));
+            });
         });
     </script>
 
