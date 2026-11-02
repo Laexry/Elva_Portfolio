@@ -1,0 +1,16 @@
+{
+  "name": "elva-portfolio",
+  "version": "1.0.0",
+  "description": "Elvaretta Alexandra's portfolio with Neon DB backend",
+  "type": "module",
+  "scripts": {
+    "dev": "node --env-file=.env.local scripts/dev.mjs",
+    "db:check": "node --env-file=.env.local scripts/check-db.mjs",
+    "db:migrate": "node --env-file=.env.local scripts/migrate.mjs",
+    "db:seed": "node --env-file=.env.local scripts/seed.mjs",
+    "db:content": "node --env-file=.env.local scripts/migrate-content.mjs"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^0.10.4"
+  }
+}
